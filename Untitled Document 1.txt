@@ -1,0 +1,41 @@
+#include <iostream>
+
+int main() {
+    int outerLimit = 3; // Limit for the outer loop
+    int dependentVar1 = 1, dependentVar2 = 2, dependentVar3 = 3, dependentVar4 = 4;
+
+    for (int i = 0; i < outerLimit; i++) {
+        std::cout << "Outer Loop i: " << i << std::endl;
+
+        // Infinite loop demonstration (controlled by break)
+        while (true) {
+            std::cout << "  Inner Loop Start (dependent variables): " << std::endl;
+
+            // Second loop with dependent variables
+            for (int j = 0; j < 2; j++) {
+                std::cout << "    Inner Loop j: " << j << std::endl;
+
+                // Use the dependent variables in some way
+                int result = (dependentVar1 + dependentVar2) * (dependentVar3 - dependentVar4 + j);
+                std::cout << "      Result using dependent vars: " << result << std::endl;
+
+                // Modify dependent variables for the next iteration
+                dependentVar1 += 1;
+                dependentVar2 += 1;
+                dependentVar3 += 1;
+                dependentVar4 += 1;
+
+                // Break the infinite loop after one inner loop iteration for demonstration
+                if (j == 1) {
+                    std::cout << "  Breaking out of inner infinite loop." << std::endl;
+                    break;
+                }
+            }
+
+            // Exit the infinite loop after completing the second loop
+            break;
+        }
+    }
+
+    return 0;
+}
